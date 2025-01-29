@@ -6,8 +6,8 @@ package Logger {
 
     fn log(msg: String){
         val logFile =
-            fs.openW(logFileName);
-        fs.write(logFile, msg);
+            fs.openA(logFileName);
+        fs.write(logFile, msg + "\n");
         fs.close(logFile);
     }
 

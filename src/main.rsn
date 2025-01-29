@@ -36,7 +36,7 @@ module Stringifier(sep: String, #package Logger,
             printList!(ls.tail);
         } else {
             enclosed {fs} {
-                Logger.log("Finished!");
+                Logger.log("printed a list");
             }
         }
     }
@@ -47,6 +47,9 @@ module Stringifier(sep: String, #package Logger,
             if i < len xs - 1 {
                 console.print(me.sep);
             }
+        };
+        enclosed {fs} {
+            Logger.log("printed an array");
         }
     }
 
