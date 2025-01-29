@@ -1,0 +1,14 @@
+#nocap;
+
+const logFileName = "log/log.txt";
+
+package Logger {
+
+    fn log(msg: String){
+        val logFile =
+            fs.openW(logFileName);
+        fs.write(logFile, msg);
+        fs.close(logFile);
+    }
+
+}

@@ -1,0 +1,53 @@
+
+datatype IntList
+struct IntCons : IntList {
+    head: Int, tail: IntList }
+struct Nil : IntList
+
+package Main {
+
+    main fn run(arr String){
+
+        val strf = new Stringifier(" - ");
+
+        val ls = new IntCons(1,
+                  new IntCons(2,
+                   new IntCons(3,
+                    new Nil())));
+        strf.printList(ls);
+        console.print("\n");
+
+        val r = newreg;
+        val array = [0, 5, 10, 15]@r;
+        strf.printArray(array);
+    }
+
+}
+
+module Stringifier(sep: String, #package Logger,
+                   device console, device fs){
+
+    fn printList(ls: IntList) {
+        if ls is IntCons {
+            console.print(ls.head as String);
+            if ls.tail is IntCons {
+                console.print(me.sep);
+            };
+            printList!(ls.tail);
+        } else {
+            enclosed {fs} {
+                Logger.log("Finished!");
+            }
+        }
+    }
+
+    fn printArray(xs: arr^ Int) {
+        for var i = 0; i < len xs; i += 1 {
+            console.print(xs[i] as String);
+            if i < len xs - 1 {
+                console.print(me.sep);
+            }
+        }
+    }
+
+}
